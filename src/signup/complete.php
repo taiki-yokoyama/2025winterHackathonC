@@ -10,11 +10,6 @@
     <p class="text-center text-gray-800 text-lg">
       登録が完了しました。
     </p>
-
-    <a href="/login.php"
-       class="block text-center mt-6 text-sm text-orange-500 underline">
-      ログイン画面へ
-    </a>
   </div>
 </body>
 </html>
