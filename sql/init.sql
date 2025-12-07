@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS do_tasks (
     FOREIGN KEY (plan_id) REFERENCES plans(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-REATE TABLE IF NOT EXISTS do_assignees (
+CREATE TABLE IF NOT EXISTS do_assignees (
     id INT AUTO_INCREMENT PRIMARY KEY,
     do_task_id INT NOT NULL,
     user_id INT NOT NULL,
