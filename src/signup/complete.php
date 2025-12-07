@@ -1,3 +1,31 @@
+<?php
+require_once __DIR__ . '/../common/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ./index.php');
+    exit;
+}
+
+$email = $_POST['email'] ?? '';
+$username = $_POST['username'] ?? '';
+
+try {
+    $pdo = getPdo();
+
+    $stmt = $pdo->prepare(
+        'INSERT INTO users (email, username) VALUES (:email, :username)'
+    );
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $message = '登録が完了しました。';
+
+} catch (PDOException $e) {
+    $message = 'エラーが発生しました：' . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,6 +40,13 @@
     <h1 class="text-orange-500 text-xl font-bold mb-4">
       登録が完了しました。
     </h1>
+
+    <?php if (!empty($message) && isset($e)) : ?>
+    <p class="text-center text-orange-600 font-bold text-xl mt-4">
+  <?= htmlspecialchars($message) ?>
+</p>
+<?php endif; ?>
+
 
     <p class="text-sm text-gray-700 mb-6">
       ログインしてサービスを開始できます。
