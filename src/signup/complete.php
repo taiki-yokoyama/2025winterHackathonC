@@ -43,9 +43,9 @@ try {
 
     <?php if (!empty($message) && isset($e)) : ?>
     <p class="text-center text-orange-600 font-bold text-xl mt-4">
-  <?= htmlspecialchars($message) ?>
-</p>
-<?php endif; ?>
+      <?= htmlspecialchars($message) ?>
+    </p>
+    <?php endif; ?>
 
 
     <p class="text-sm text-gray-700 mb-6">
